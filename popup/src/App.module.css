@@ -1,0 +1,25 @@
+.cntr{
+    width: 16rem;
+
+    ul{
+        list-style: decimal;
+        padding-left: 15px;
+    }
+    li{
+        margin-bottom: 10px;
+
+        button{
+            font-size: 13px;
+            text-decoration: underline;
+            text-align: left;
+            font-weight: bold;
+        }    
+    }
+}
+
+.headerCntr{
+    display: flex;
+    align-items: end;
+    margin-bottom: 15px;
+    gap: 5px;
+}

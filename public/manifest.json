@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Medium Charged",
+    "description": "Table of Contents to help readers on Medium.com",
+    "version": "1.0",
+    "icons": {
+      "48": "images/icon.png"
+    },
+    "action": {
+        "default_popup": "popup/index.html"
+    },
+    "content_scripts":[{
+      "js": ["assets/content-script.js"],
+      "matches": ["<all_urls>"]
+    }],
+    "web_accessible_resources": [{
+      "matches": [ "<all_urls>" ],
+      "resources": ["assets/*"]
+   }],
+   "permissions": ["bookmarks"]
+  }
