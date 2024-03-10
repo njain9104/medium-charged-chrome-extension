@@ -11,11 +11,10 @@
     },
     "content_scripts":[{
       "js": ["assets/content-script.js"],
-      "matches": ["<all_urls>"]
+      "matches": ["https://*/*"]
     }],
     "web_accessible_resources": [{
-      "matches": [ "<all_urls>" ],
+      "matches": ["https://*/*"],
       "resources": ["assets/*"]
-   }],
-   "permissions": ["bookmarks"]
+   }]
   }
