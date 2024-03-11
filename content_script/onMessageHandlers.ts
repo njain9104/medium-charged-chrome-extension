@@ -13,7 +13,7 @@ export const onOpenPopup = () => {
     if(headers && headers.length > 0){
         for(let header of headers){
             const {id,textContent,tagName,classList} = header;
-            if(tagName === 'footer') break;
+            if(tagName.toLowerCase() === 'footer') break;
             if(id){
                 const classListSet = new Set(classList);
                 RESTRICTED_CLASSLISTS.forEach(cl => {
