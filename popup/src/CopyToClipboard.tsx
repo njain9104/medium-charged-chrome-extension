@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { sendMessageFromActiveTab } from "../../shared/chrome-utils";
+import { sendMessageToContent } from "../../shared/chrome-utils";
 import { Headers, MessageTypes } from "../../shared/types";
 
 
@@ -7,7 +7,7 @@ const CopyToClipboard:FC<{headers:Headers}> = ({headers}) => {
     const [copied,setCopied] = useState(false);
 
     const onCopyToClipboard = async () => {
-        const response = await sendMessageFromActiveTab<{html:string}>({type:MessageTypes.GET_CLIPBOARD_HTML,body:{headers}});
+        const response = await sendMessageToContent<{html:string}>({type:MessageTypes.GET_CLIPBOARD_HTML,body:{headers}});
   
         if(navigator.clipboard && response?.html){
           const type = 'text/html'

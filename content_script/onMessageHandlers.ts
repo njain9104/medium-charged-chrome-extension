@@ -1,12 +1,13 @@
-import { Headers } from "../shared/types";
+// import { sendMessageToBackground } from "../shared/chrome-utils";
+import { Headers} from "../shared/types";
+import { prepareUrl } from "../shared/utils";
 
 // Ignore h1 as it is title
 const headerTags = ["h2","h3","h4","h5","h6","footer"].join(',');
 
 const RESTRICTED_CLASSLISTS = ['pw-subtitle-paragraph'];
 
-
-export const onOpenPopup = () => {
+export const onOpenPopup = async () => {
     const headers = document.querySelectorAll(headerTags);
     const headerDetails:Headers = [];
 
@@ -16,11 +17,12 @@ export const onOpenPopup = () => {
             if(tagName.toLowerCase() === 'footer') break;
             if(id){
                 const classListSet = new Set(classList);
-                RESTRICTED_CLASSLISTS.forEach(cl => {
+                for(const cl of RESTRICTED_CLASSLISTS){
                     if(!classListSet.has(cl)){
-                        headerDetails.push({id,textContent: (header as HTMLElement).innerText || textContent,tagName});
+                        const url = prepareUrl(id);
+                        headerDetails.push({id,textContent: (header as HTMLElement).innerText || textContent,tagName,url});
                     }
-                })
+                }
             }
         }
     }
@@ -37,7 +39,7 @@ export const onGetClipboardHTML = (headers=[] as Headers) => {
     
     headers.forEach(header => {
       const anchor = document.createElement("a");
-      anchor.setAttribute("href",location.origin+location.pathname+`#${header.id}`);
+      anchor.setAttribute("href",header.url);
       anchor.innerText = header.textContent as string;
       root.appendChild(anchor);
       root.appendChild(document.createElement("br"));

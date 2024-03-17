@@ -1,0 +1,20 @@
+.list{
+    list-style: decimal;
+    padding-left: 15px;
+}
+
+.listItem{
+    margin-bottom: 10px;
+
+    & > div{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button{
+            font-size: 13px;
+            text-decoration: underline;
+            text-align: left;
+            font-weight: bold;
+        }
+    }
+}

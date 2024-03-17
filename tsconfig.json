@@ -21,6 +21,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
   },
-  "include": ["popup","content_script","shared"],
+  "include": ["popup","content_script","background","shared"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
